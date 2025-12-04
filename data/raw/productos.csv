@@ -1,0 +1,29 @@
+producto_id,nombre_producto,categoria,subcategoria,precio_base_ars_2018
+1,Laptop Premium,Tecnologia,Computo,30000
+2,Desktop Gamer,Tecnologia,Computo,40000
+3,"Monitor 27""",Tecnologia,Computo,8000
+4,Teclado Mecánico,Tecnologia,Computo,2500
+5,Mouse Gamer,Tecnologia,Computo,1500
+6,Smartphone Alta Gama,Tecnologia,Moviles,25000
+7,Smartphone Media Gama,Tecnologia,Moviles,12000
+8,Tablet Pro,Tecnologia,Moviles,15000
+9,Smartwatch,Tecnologia,Moviles,6000
+10,Auriculares,Tecnologia,Moviles,3500
+11,"Smart TV 55""",Tecnologia,TV & Entretenimiento,20000
+12,"Smart TV 65""",Tecnologia,TV & Entretenimiento,28000
+13,Consola Gaming,Tecnologia,TV & Entretenimiento,15000
+14,Chromecast,Tecnologia,TV & Entretenimiento,2000
+15,Heladera No Frost,Linea Blanca,Refrigeracion,22000
+16,Freezer,Linea Blanca,Refrigeracion,18000
+17,Lavadora,Linea Blanca,Lavado,19000
+18,Secadora,Linea Blanca,Lavado,17000
+19,Cocina Vitrocerámica,Linea Blanca,Cocina,15000
+20,Microondas,Linea Blanca,Cocina,4500
+21,Aire Acondicionado,Linea Blanca,Climatizacion,27000
+22,Calefactor,Linea Blanca,Climatizacion,4000
+23,Cafetera,Pequeños Electro,Cocina & Hogar,4500
+24,Licuadora,Pequeños Electro,Cocina & Hogar,3000
+25,Aspiradora Robot,Pequeños Electro,Cocina & Hogar,8000
+26,Plancha,Pequeños Electro,Cocina & Hogar,2000
+27,Corta Pelo,Pequeños Electro,Cuidado Personal,1500
+28,Secador,Pequeños Electro,Cuidado Personal,2000
