@@ -5,7 +5,7 @@ import pandas as pd
 
 # Simulación de la carga de datos limpios para el ejemplo
 # Asume que esta variable tiene el DataFrame final consolidado
-df_final = pd.read_csv('data/generated_IA/ventas_electro_tecnologia_simulado.csv') 
+df_final = pd.read_parquet('data/analytical_layer/modelo_estrella_final.parquet') 
 df_final['Fecha'] = pd.to_datetime(df_final['Fecha'])
 
 # --- Configuración y Título ---
