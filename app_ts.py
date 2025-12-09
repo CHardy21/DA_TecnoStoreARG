@@ -5,7 +5,7 @@ import pandas as pd
 
 # Simulación de la carga de datos limpios para el ejemplo
 # Asume que esta variable tiene el DataFrame final consolidado
-df_final = pd.read_parquet('data/analytical_layer/modelo_estrella_final.parquet') 
+df_final = pd.read_parquet("data/analytical_layer/tecnoStore_modelo_estrella.parquet", engine="fastparquet") 
 df_final['Fecha'] = pd.to_datetime(df_final['Fecha'])
 
 # --- Configuración y Título ---
