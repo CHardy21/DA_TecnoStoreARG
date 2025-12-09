@@ -1,27 +1,87 @@
 import streamlit as st
 
-# --- Función de formato ---
-def formato_latino(num):
-    """Formatea un número con punto como separador de miles y coma como decimal (formato latino)."""
-    return f"{num:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
+def formato_millones(valor):
+    millones = valor / 1_000_000
+    return f"{millones:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
 
-# --- Función principal de renderizado de KPIs ---
 def render_kpis(df_filtrado):
-    df_filtrado["TotalSales"] = df_filtrado["Sales"] * df_filtrado["Quantity"]
-    df_filtrado["TotalDiscount"] = df_filtrado["TotalSales"] * df_filtrado["Discount"]
+    ventas_nominal = df_filtrado['monto_venta_ars_nominal'].sum()
+    ventas_constantes = df_filtrado['monto_venta_ars_real_2018'].sum()
+    clientes_activos = df_filtrado["nombre_cliente"].nunique()
 
-    total_sales = df_filtrado["TotalSales"].sum()
-    total_profit = df_filtrado["Profit"].sum()
-    total_discount = df_filtrado["TotalDiscount"].sum()
-    avg_sales_per_order = df_filtrado["TotalSales"].mean()
+    # CSS responsive
+    st.markdown("""
+        <style>
+        .metric-box {
+            border: 1px solid #1e1e1e;
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+            background-color: #000;
+        }
+        .metric-label {
+            font-size: 1em;
+            color: #fff;
+        }
+        .metric-value {
+            font-size: 3em;
+            color: #1c48cb;
+        }
+        .metric-suffix {
+            font-size: 0.5em;
+            vertical-align: super;
+            color: gray;
+            margin-left: 4px;
+        }
 
-    # --- KPIs en horizontal ---
-    kpi_cols = st.columns(4)
-    with kpi_cols[0]:
-        st.metric("Total Sales Amount", f"${formato_latino(total_sales)}")
-    with kpi_cols[1]:
-        st.metric("Total Profit", f"${formato_latino(total_profit)}")
-    with kpi_cols[2]:
-        st.metric("Total Discount", f"${formato_latino(total_discount)}")
-    with kpi_cols[3]:
-        st.metric("Avg Sales per Order", f"${formato_latino(avg_sales_per_order)}")
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            .metric-value {
+                font-size: 2em;   /* más chico en tablets/móviles */
+            }
+            .metric-label {
+                font-size: 0.9em;
+            }
+            .metric-suffix {
+                font-size: 0.6em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .metric-value {
+                font-size: 1.5em; /* aún más chico en móviles */
+            }
+            .metric-label {
+                font-size: 0.8em;
+            }
+            .metric-suffix {
+                font-size: 0.5em;
+            }
+        }
+        </style>
+    """, unsafe_allow_html=True)
+
+    col1, col2, col3 = st.columns(3)
+
+    col1.markdown(
+        f"<div class='metric-box'>"
+        f"<div class='metric-label'>Ventas Totales (Nominal)</div>"
+        f"<div class='metric-value'>${formato_millones(ventas_nominal)}"
+        f"<span class='metric-suffix'>Mill.</span></div>"
+        f"</div>", unsafe_allow_html=True
+    )
+
+    col2.markdown(
+        f"<div class='metric-box'>"
+        f"<div class='metric-label'>Ventas Totales (Constantes 2018)</div>"
+        f"<div class='metric-value'>${formato_millones(ventas_constantes)}"
+        f"<span class='metric-suffix'>Mill.</span></div>"
+        f"</div>", unsafe_allow_html=True
+    )
+
+    col3.markdown(
+        f"<div class='metric-box'>"
+        f"<div class='metric-label'>Clientes Activos</div>"
+        f"<div class='metric-value'>{clientes_activos:,}".replace(",", ".") + "</div>"
+        f"</div>", unsafe_allow_html=True
+    )
