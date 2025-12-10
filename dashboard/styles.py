@@ -34,6 +34,12 @@ def apply_custom_css():
         /* div[data-testid="stSidebarContent"] + div {
             padding-top: 1rem !important;
         } */
+        
+        /* Toolbar superior de Streamlit (modo dev) */
+        .st-emotion-cache-gquqoo {
+            background: transparent !important;
+        }
+
 
         /* ================================================= */
         /* === 1. ESTILOS PARA KPIs (st.metric) === */
