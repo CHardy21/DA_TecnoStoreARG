@@ -26,9 +26,13 @@ def render_charts(df_filtrado, metrica):
         x="Periodo_Mes",
         y=y_col,
         color="Canal_Venta",
-        title=f"Evolución Mensual de Ventas ({metrica})"
+        title=f"Evolución Mensual de Ventas ({metrica})",
+        labels={
+            "Periodo_Mes": "Periodo",
+            y_col: "Monto   de  Ventas"  # acá renombrás el eje Y
+            }
     )
-    st.plotly_chart(fig_linea, use_container_width=True)
+    st.plotly_chart(fig_linea, width='stretch')
 
     # --- Layout inferior: izquierda (dos filas) + derecha (mapa) ---
     col_izq, col_der = st.columns([1.5,1.5])
@@ -38,18 +42,30 @@ def render_charts(df_filtrado, metrica):
         df_filtrado.groupby("Canal_Venta")[y_col].sum().reset_index(),
         x="Canal_Venta",
         y=y_col,
-        title=f"Ventas por Canal ({metrica})"
+        title=f"Ventas por Canal ({metrica})",
+        labels={
+            "Canal_Venta": "Canal  de  Ventas",
+            y_col: "Monto   de  Ventas"  # acá renombrás el eje Y
+            }
     )
-    col_izq.plotly_chart(fig_barras_canal, use_container_width=True)
+    fig_barras_canal.update_layout(height=400)
+
+    col_izq.plotly_chart(fig_barras_canal, width='stretch')
 
     # Gráfico de distribución por categoría
     fig_barras_cat = px.bar(
         df_filtrado.groupby("categoria")[y_col].sum().reset_index(),
         x="categoria",
         y=y_col,
-        title=f"Distribución por Categoría ({metrica})"
+        title=f"Distribución por Categoría ({metrica})",
+        labels={
+            "categoria": "Categoría de Productos",
+            y_col: "Monto   de  Ventas"  # acá renombrás el eje Y
+            }
     )
-    col_izq.plotly_chart(fig_barras_cat, use_container_width=True)
+    fig_barras_cat.update_layout(height=400)
+    
+    col_izq.plotly_chart(fig_barras_cat, width='stretch')
 
     # --- Diccionario de coordenadas de provincias argentinas ---
     coords_provincias = {
@@ -84,17 +100,37 @@ def render_charts(df_filtrado, metrica):
     ventas_prov["lon"] = ventas_prov["Provincia"].map(lambda x: coords_provincias.get(x, (None, None))[1])
 
     fig_mapbox = px.scatter_mapbox(
-        ventas_prov,
-        lat="lat",
-        lon="lon",
-        size=y_col,
-        color=y_col,
-        color_continuous_scale="inferno",  # escala vibrante tipo púrpura a amarillo
-        hover_name="Provincia",
-        mapbox_style="carto-positron",
-        zoom=3,
-        center={"lat": -38.4161, "lon": -63.6167},
-        title=f"Ventas por Provincia ({metrica})",
-        size_max=60 
+    ventas_prov,
+    lat="lat",
+    lon="lon",
+    size=y_col,
+    color=y_col,
+    color_continuous_scale="inferno",
+    hover_name="Provincia",
+    mapbox_style="carto-positron",
+    zoom=3,
+    center={"lat": -38.4161, "lon": -63.6167},
+    title=f"Ventas por Provincia ({metrica})",
+    size_max=60
+)
+
+    # Layout: alto y márgenes, más colorbar compacta
+    fig_mapbox.update_layout(
+        autosize=True,
+        height=815,  # controla el viewport vertical
+        margin=dict(l=10,),
+        #paper_bgcolor="white",
+        #plot_bgcolor="white",
+        coloraxis_colorbar=dict(
+            title="", thickness=12, len=0.6, x=0.99  # barra de color más angosta y centrada
+        ),
+        legend=dict(yanchor="top", y=1, xanchor="left", x=10)
     )
-    col_der.plotly_chart(fig_mapbox, use_container_width=True, height=900)
+
+    # Ajuste de zoom al contenido (si cambia el set de provincias)
+    fig_mapbox.update_layout(
+        mapbox=dict(center={"lat": -38.4161, "lon": -63.6167}, zoom=3)
+    )
+
+    # Render en Streamlit
+    col_der.plotly_chart(fig_mapbox, width='stretch')

@@ -6,7 +6,7 @@ def render_filters(df):
     with col1:
         st.image("assets/favicon.png", width=70)  
     with col2:
-        st.title("TecnoStore Dashboard")
+        st.title("CHardy TecnoStore ARG ")
 
 
 
