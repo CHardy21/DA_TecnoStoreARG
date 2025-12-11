@@ -1,0 +1,6 @@
+[theme]
+base="dark"
+primaryColor="#FF4B4B"              # rojo vibrante para resaltar KPIs
+backgroundColor="#0E1117"           # gris oscuro elegante
+secondaryBackgroundColor="#262730"  # sidebar y bloques secundarios
+textColor="#FAFAFA"                 # texto claro para máxima legibilidad

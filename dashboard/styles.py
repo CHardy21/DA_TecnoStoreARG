@@ -36,11 +36,15 @@ def apply_custom_css():
         } */
         
         /* Toolbar superior de Streamlit (modo dev) */
-        .st-emotion-cache-gquqoo {
+
+        div[data-testid="stToolbar"] {
             background: transparent !important;
         }
-
-
+        /* Todos los hijos dentro del header */
+        .stAppHeader{
+            background: transparent !important;
+        }
+        
         /* ================================================= */
         /* === 1. ESTILOS PARA KPIs (st.metric) === */
         /* ================================================= */
@@ -76,14 +80,22 @@ def apply_custom_css():
         div[data-testid="stVegaLiteChart"],
         div.stECharts { 
             /* Mismo estilo de Borde y Fondo que los KPIs */
-            border: 1px solid #D3D3D3;
+            border: 0px solid #D3D3D3;
             border-radius: 5px;
-            padding: 1px; 
+            margin: 0px;
+            padding: 0px 10px 0px 10px; 
             /*background-color: #F0F2F6;*/
-            margin-bottom: 25px; /* Separación entre filas de gráficos */
-            box-shadow: 2px 2px 5px rgba(0,0,0,0.1); /* Sombra suave opcional */
+            /*margin-bottom: 25px; /* Separación entre filas de gráficos */*/
+            /*box-shadow: 2px 2px 5px rgba(0,0,0,0.1); /* Sombra suave opcional */*/
         }
-        
+
+        /* Aplica estilo al padre del padre que contiene un stPlotlyChart */
+        div[data-testid="stElementContainer"]:has(div[data-testid="stFullScreenFrame"] > div[data-testid="stPlotlyChart"]) {
+            border: 1px solid #D3D3D3;
+            border-radius: 10px;
+           }
+
+
         </style>
         """,
         unsafe_allow_html=True,

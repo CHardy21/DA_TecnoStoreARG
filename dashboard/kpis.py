@@ -22,7 +22,7 @@ def render_kpis(df_filtrado, metrica):
     else:
         ticket_promedio = df_filtrado['monto_venta_ars_nominal'].mean()
 
-    print("Metrica: ", metrica)
+   
     # CSS responsive
     st.markdown("""
         <style>
