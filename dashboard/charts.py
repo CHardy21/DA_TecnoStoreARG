@@ -97,4 +97,4 @@ def render_charts(df_filtrado, metrica):
         title=f"Ventas por Provincia ({metrica})",
         size_max=60 
     )
-    col_der.plotly_chart(fig_mapbox, use_container_width=True, height=800)
+    col_der.plotly_chart(fig_mapbox, use_container_width=True, height=900)

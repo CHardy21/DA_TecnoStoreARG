@@ -1,10 +1,10 @@
 import streamlit as st
 
 def render_filters(df):
-        # --- Logo + Título en la misma fila ---
-    col1, col2 = st.columns([0.1, 1.5])  # ajustá proporciones según tamaño del logo
+    # --- Logo + Título en la misma fila ---
+    col1, col2 = st.columns([0.1, 1.5])  
     with col1:
-        st.image("assets/favicon.png", width=70)  # tu logo en carpeta assets
+        st.image("assets/favicon.png", width=70)  
     with col2:
         st.title("TecnoStore Dashboard")
 
@@ -34,12 +34,6 @@ def render_filters(df):
             horizontal=True
         )
 
-
-    # df_filtrado = df[df["Periodo"] == periodo]
-    # if canal != "Todos":
-    #     df_filtrado = df_filtrado[df_filtrado["Canal_Venta"] == canal]
-
-    # return df_filtrado, metrica
 
     # --- Filtros ---
     if periodo == "Todos":

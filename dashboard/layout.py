@@ -21,9 +21,6 @@ def render_layout(df_filtrado, metrica):
         "y consolidándose en el período post. Este comportamiento se refleja de manera heterogénea entre provincias, "
         "con Buenos Aires y Córdoba liderando la adopción digital, mientras que otras regiones mantienen valores más "
         "constantes."
-        "Recomendación de negocio: Consolidar la inversión en canales online, reforzando la infraestructura y estrategias"
-        "de marketing digital en las provincias con mayor potencial de expansión, para capitalizar la tendencia "
-        "y equilibrar la participación territorial."
     )
     st.subheader("Recomendación de negocio:")
     st.info(

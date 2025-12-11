@@ -8,14 +8,14 @@ from dashboard.layout import render_layout
 st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded",
-    page_title="TecnoStore - Dashboard Analítico"
+    page_title="CHardy TecnoStore ARG - Dashboard Analítico"
 )
 
 # --- Aplicar CSS ---
 apply_custom_css()
 
 # --- Función de carga optimizada ---
-@st.cache_data(show_spinner="Cargando modelo estrella...")
+@st.cache_data(show_spinner="Cargando modelo de CHardy TecnoStore ARG...")
 def cargar_modelo_datos():
     cols = [
         "fecha","año","mes","cantidad",
@@ -80,8 +80,6 @@ def cargar_modelo_datos():
 
 # --- Ejecución principal ---
 df = cargar_modelo_datos()
-print(df.info())
-#print(df.head(5))
 
 df_filtrado, metrica = render_filters(df)
 
