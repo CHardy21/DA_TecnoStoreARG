@@ -1,41 +1,62 @@
 import streamlit as st
 
-def render_filters(df):
-    # --- Logo + Título en la misma fila ---
-    col1, col2 = st.columns([0.1, 1.5])  
-    with col1:
-        st.image("assets/favicon.png", width=70)  
-    with col2:
-        st.title("CHardy TecnoStore ARG ")
 
+def render_filters(df, sidebar=False):
+    # --- Logo + Título ---
+    if sidebar:
+        st.sidebar.image("assets/favicon.png", width=70)
+        st.sidebar.title("CHardy TecnoStore ARG ")
+    else:
+        col1, col2 = st.columns([0.1, 1.5])  
+        with col1:
+            st.image("assets/favicon.png", width=70)  
+        with col2:
+            st.title("CHardy TecnoStore ARG ")
 
-
-
-    col1, col2, col3 = st.columns([1.5,1,1.5])
-
-    with col1:
-        periodo = st.segmented_control(
+    # --- Filtros ---
+    if sidebar:
+        periodo = st.sidebar.segmented_control(
             "Períodos",
             ["Todos", "Pre-pandemia", "Pandemia", "Post-pandemia"], 
             default="Todos"
         )
-    with col2:
-        canal = st.segmented_control(
+
+        canal = st.sidebar.segmented_control(
             "Canal de Venta",
-            [ "Todos", "Sucursal Fisica", "Online"],
-            default = "Todos"
+            ["Todos", "Sucursal Fisica", "Online"],
+            default="Todos"
         )
-        
-    with col3:
-        metrica = st.radio(
+
+        metrica = st.sidebar.radio(
             "Métrica",
             ["Valores Corrientes (Nominal)", "Valores Constantes (2018)"],
             index=0,
             horizontal=True
         )
+    else:
+        col1, col2, col3 = st.columns([1.5,1,1.5])
 
+        with col1:
+            periodo = st.segmented_control(
+                "Períodos",
+                ["Todos", "Pre-pandemia", "Pandemia", "Post-pandemia"], 
+                default="Todos"
+            )
+        with col2:
+            canal = st.segmented_control(
+                "Canal de Venta",
+                ["Todos", "Sucursal Fisica", "Online"],
+                default="Todos"
+            )
+        with col3:
+            metrica = st.radio(
+                "Métrica",
+                ["Valores Corrientes (Nominal)", "Valores Constantes (2018)"],
+                index=0,
+                horizontal=True
+            )
 
-    # --- Filtros ---
+    # --- Aplicar filtros al DataFrame ---
     if periodo == "Todos":
         df_filtrado = df.copy()
     else:

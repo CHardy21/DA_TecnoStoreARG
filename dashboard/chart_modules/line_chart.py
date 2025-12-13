@@ -2,18 +2,17 @@ import streamlit as st
 import plotly.express as px
 import pandas as pd
 
-def render_line_chart(df: pd.DataFrame, column):
-    # Lógica de cálculo: Línea temporal: ventas y profit por mes
-    df["Month"] = df["OrderDate"].dt.month
-    df_mes = df.groupby("Month")[["TotalSales", "Profit"]].sum().reset_index()
-    
+def render_line_chart(df, y_col, metrica, ALTO):
     fig_linea = px.line(
-        df_mes, 
-        x="Month", 
-        y=["TotalSales", "Profit"], 
-        title="Ventas y Profit por Mes"
+        df,
+        x="Periodo_Mes",
+        y=y_col,
+        color="Canal_Venta",
+        title=f"Evolución Mensual de Ventas ({metrica})",
+        labels={
+            "Periodo_Mes": "Periodo",
+            y_col: "Monto   de  Ventas"  # acá renombrás el eje Y
+            }
     )
-    
-    # Renderizar en la columna pasada
-    with column:
-        st.plotly_chart(fig_linea, use_container_width=True)
+    fig_linea.update_layout(height=ALTO)
+    st.plotly_chart(fig_linea, width='stretch')

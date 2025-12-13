@@ -70,6 +70,60 @@ def apply_custom_css():
             font-weight: bold;
         }
 
+        /* === 1.2. ESTILOS PARA KPIs (markdown <div>) === */
+        .metric-box {
+            border: 1px solid #1e1e1e;
+            border-radius: 8px;
+            padding: 8px;
+            text-align: center;
+            background-color: #000;
+            margin-bottom: 10px;
+        }
+        .metric-label {
+            font-size: 0.8em;
+            color: #fff;
+        }
+        .metric-value {
+            font-size: 2.5em;
+            color: #1c48cb;
+        }
+        .metric-suffix {
+            font-size: 0.35em;
+            vertical-align: super;
+            color: gray;
+            margin-left: 4px;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            .metric-value {
+                font-size: 1.6em;   /* más chico en tablets/móviles */
+            }
+            .metric-label {
+                font-size: 0.7em;
+            }
+            .metric-suffix {
+                font-size: 0.4em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .metric-value {
+                font-size: 1.5em; /* aún más chico en móviles */
+            }
+            .metric-label {
+                font-size: 0.8em;
+            }
+            .metric-suffix {
+                font-size: 0.5em;
+            }
+        }
+
+
+
+
+
+
         /* ================================================= */
         /* === 2. ESTILOS PARA GRÁFICOS (Plotly/ECharts/Altair) === */
         /* ================================================= */
@@ -94,6 +148,7 @@ def apply_custom_css():
             border: 1px solid #D3D3D3;
             border-radius: 10px;
            }
+
 
 
         </style>

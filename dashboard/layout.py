@@ -3,22 +3,22 @@ from dashboard.kpis import render_kpis
 from dashboard.charts import render_charts
 
 
-def render_layout(df_filtrado, metrica):
+def render_layout(df_filtrado, metrica, sidebar="False"):
     
     # KPIs en fila superior
     render_kpis(df_filtrado, metrica)
 
-    st.markdown("---")
+    #st.markdown("---")
 
     # Gráficos en grid 2x2
-    render_charts(df_filtrado, metrica)
+    render_charts(df_filtrado, metrica, sidebar)
 
     # --- Conclusión ---
     st.markdown("---")
     st.subheader("Conclusión:")
     st.info(
-        "El canal online mostró un crecimiento sostenido desde la etapa pre‑pandemia, acelerándose durante la pandemia"
-        "y consolidándose en el período post. Este comportamiento se refleja de manera heterogénea entre provincias, "
+        "El canal online mostró un crecimiento sostenido desde la etapa pre‑pandemia, acelerándose durante la pandemia "
+        "y consolidándose en el período post-pandemia.\n\n Este comportamiento se refleja de manera heterogénea entre provincias, "
         "con Buenos Aires y Santa Fe liderando la adopción digital, mientras que otras regiones mantienen valores más "
         "constantes."
     )

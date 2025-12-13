@@ -14,13 +14,6 @@ st.set_page_config(
 # --- Aplicar CSS ---
 apply_custom_css()
 
-# Leer parámetros de la URL
-params = st.query_params
-
-# Si existe ?sidebar=true en la URL, lo activamos
-show_sidebar = params.get("sidebar", "false").lower() == "true"
-
-
 # --- Función de carga optimizada ---
 @st.cache_data(show_spinner="Cargando modelo de CHardy TecnoStore ARG...")
 def cargar_modelo_datos():
@@ -88,8 +81,6 @@ def cargar_modelo_datos():
 # --- Ejecución principal ---
 df = cargar_modelo_datos()
 
-#SIDEBAR_ON = False
+df_filtrado, metrica = render_filters(df, sidebar=True)
 
-df_filtrado, metrica = render_filters(df, show_sidebar)
-
-render_layout(df_filtrado, metrica, show_sidebar)
+render_layout(df_filtrado, metrica)
