@@ -11,14 +11,25 @@ st.set_page_config(
     page_title="CHardy TecnoStore ARG - Dashboard Analítico"
 )
 
+# --- Helper para parámetros booleanos ---
+def get_bool_param(param_name: str, default: bool = False) -> bool:
+    """
+    Devuelve el valor booleano de un parámetro en la URL.
+    Ejemplo: ?sidebar=True → True
+             ?sidebar=false → False
+    """
+    params = st.query_params
+    raw_value = params.get(param_name, str(default))
+
+    # Si es lista, tomar el primer elemento
+    if isinstance(raw_value, list):
+        raw_value = raw_value[0]
+
+    return str(raw_value).lower() in {"true", "1", "yes", "on"}
+
+
 # --- Aplicar CSS ---
 apply_custom_css()
-
-# Leer parámetros de la URL
-params = st.query_params
-
-# Si existe ?sidebar=true en la URL, lo activamos
-show_sidebar = params.get("sidebar", "false").lower() == "true"
 
 
 # --- Función de carga optimizada ---
@@ -88,8 +99,11 @@ def cargar_modelo_datos():
 # --- Ejecución principal ---
 df = cargar_modelo_datos()
 
-#SIDEBAR_ON = False
+# Obtener el valor desde la URL
+show_sidebar = get_bool_param("sidebar", default=False)
+print("show_sidebar: ",show_sidebar)
 
-df_filtrado, metrica = render_filters(df, show_sidebar)
+# Renderizando la WEB
+df_filtrado, metrica = render_filters(df, sidebar=show_sidebar)
 
-render_layout(df_filtrado, metrica, show_sidebar)
+render_layout(df_filtrado, metrica, sidebar=show_sidebar)

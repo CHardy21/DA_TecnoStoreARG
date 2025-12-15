@@ -149,6 +149,92 @@ def apply_custom_css():
             border-radius: 10px;
            }
 
+        /* --------------------------------------------------- */
+        /* --- Estilo para segmented_control en el sidebar --- */
+        /* --------------------------------------------------- */
+        /* ====== Segmented control en sidebar ====== */
+        /* Contenedor: ajusta el gap para que parezcan botones separados */
+        [data-testid="stSidebar"] [data-testid="stSegmentedControl"] > div {
+            gap: 8px !important;
+        }
+
+        /* Botones/tabs */
+        [data-testid="stSidebar"] [data-testid="stSegmentedControl"] [role="tab"] {
+            background: #f0f0f0 !important;
+            color: #333 !important;
+            border: 1px solid #ccc !important;
+            border-radius: 6px !important;
+            padding: 6px 12px !important;
+            margin: 2px !important;
+            font-weight: 500 !important;
+            cursor: pointer !important;
+            box-shadow: none !important;
+        }
+
+        /* Hover */
+        [data-testid="stSidebar"] [data-testid="stSegmentedControl"] [role="tab"]:hover {
+            background: #e0e0e0 !important;
+        }
+
+        /* Seleccionado (BaseWeb/ARIA) */
+        [data-testid="stSidebar"] [data-testid="stSegmentedControl"] [role="tab"][aria-selected="true"] {
+            background: #0066cc !important;
+            color: #fff !important;
+            border-color: #004c99 !important;
+        }
+
+        /* ====== Radio en sidebar ====== */
+        /* Fuerza horizontal si lo estás usando horizontal=True */
+        [data-testid="stSidebar"] .stRadio > div {
+            flex-direction: row !important;
+            flex-wrap: wrap !important;
+            gap: 8px !important;
+        }
+
+        /* Cada opción del radio */
+        [data-testid="stSidebar"] .stRadio div[role="radio"] {
+            background: #f0f0f0 !important;
+                color: #333 !important;
+                border: 1px solid #ccc !important;
+                border-radius: 6px !important;
+                padding: 6px 12px !important;
+                font-weight: 500 !important;
+                cursor: pointer !important;
+            }
+
+            /* ===== Chips en sidebar (visual) ===== */
+            [data-testid="stSidebar"] .chip {
+                display: inline-block;
+                padding: 6px 12px;
+                margin: 4px;
+                border: 1px solid #ccc;
+                border-radius: 6px;
+                background: #f0f0f0;
+                color: #333;
+                font-weight: 500;
+            }
+            [data-testid="stSidebar"] .chip:hover {
+                background: #e0e0e0;
+            }
+            [data-testid="stSidebar"] .chip-selected {
+                background: #0066cc;
+                color: #fff;
+                border-color: #004c99;
+            }
+
+            /* ===== Botones del sidebar (para opciones no seleccionadas) ===== */
+            [data-testid="stSidebar"] .stButton > button {
+                background: #f7f7f7;
+                color: #333;
+                border: 1px solid #ccc;
+                border-radius: 6px;
+                padding: 6px 12px;
+                font-weight: 500;
+                cursor: pointer;
+            }
+            [data-testid="stSidebar"] .stButton > button:hover {
+                background: #e0e0e0;
+            }
 
 
         </style>

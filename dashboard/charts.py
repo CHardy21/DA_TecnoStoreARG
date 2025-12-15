@@ -6,7 +6,7 @@ from .chart_modules.canal_bar import render_canal_bar
 from .chart_modules.categories_bar import render_categories_bar
 from .chart_modules.prov_arg_map import render_map
 
-def render_charts(df_filtrado, metrica, sidebar="False"):
+def render_charts(df_filtrado, metrica, sidebar: bool):
 
     if sidebar:
         ALTO = 250
@@ -51,7 +51,7 @@ def render_charts(df_filtrado, metrica, sidebar="False"):
                 # Gráfico de distribución por categoría
                 render_categories_bar(df_filtrado,y_col, metrica, ALTO)
         with col_der:
-            render_map(df_filtrado,y_col, metrica, ALTO*2)
+            render_map(df_filtrado,y_col, metrica, ALTO*2, 40) 
 
     else:
         # Gráfico de lineas
@@ -67,5 +67,5 @@ def render_charts(df_filtrado, metrica, sidebar="False"):
             # Gráfico de distribución por categoría
             render_categories_bar(df_filtrado,y_col, metrica, ALTO)
         with col_der:
-            render_map(df_filtrado,y_col, metrica, ALTO*2)
+            render_map(df_filtrado,y_col, metrica, ALTO*2, 60)
 

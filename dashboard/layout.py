@@ -3,7 +3,7 @@ from dashboard.kpis import render_kpis
 from dashboard.charts import render_charts
 
 
-def render_layout(df_filtrado, metrica, sidebar="False"):
+def render_layout(df_filtrado, metrica, sidebar: bool):
     
     # KPIs en fila superior
     render_kpis(df_filtrado, metrica)

@@ -1,7 +1,7 @@
 import streamlit as st
 import plotly.express as px
 
-def render_map(df_filtrado, y_col, metrica, ALTO):
+def render_map(df_filtrado, y_col, metrica, ALTO, size):
         # --- Diccionario de coordenadas de provincias argentinas ---
         coords_provincias = {
             "Buenos Aires": (-34.61, -58.38),
@@ -40,13 +40,13 @@ def render_map(df_filtrado, y_col, metrica, ALTO):
         lon="lon",
         size=y_col,
         color=y_col,
-        color_continuous_scale="inferno",
+        color_continuous_scale="plasma",
         hover_name="Provincia",
         mapbox_style="carto-positron",
         zoom=3,
         center={"lat": -38.4161, "lon": -63.6167},
         title=f"Ventas por Provincia ({metrica})",
-        size_max=60
+        size_max=size
     )
 
         # Layout: alto y márgenes, más colorbar compacta
