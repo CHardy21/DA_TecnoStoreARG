@@ -51,7 +51,7 @@ def render_charts(df_filtrado, metrica, sidebar: bool):
                 # Gráfico de distribución por categoría
                 render_categories_bar(df_filtrado,y_col, metrica, ALTO)
         with col_der:
-            render_map(df_filtrado,y_col, metrica, ALTO*2, 40) 
+            render_map(df_filtrado,y_col, metrica, ALTO*2, 40, 2.5) 
 
     else:
         # Gráfico de lineas
@@ -67,5 +67,5 @@ def render_charts(df_filtrado, metrica, sidebar: bool):
             # Gráfico de distribución por categoría
             render_categories_bar(df_filtrado,y_col, metrica, ALTO)
         with col_der:
-            render_map(df_filtrado,y_col, metrica, ALTO*2, 60)
+            render_map(df_filtrado,y_col, metrica, ALTO*2, 60, 3)
 

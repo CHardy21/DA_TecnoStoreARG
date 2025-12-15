@@ -1,7 +1,7 @@
 import streamlit as st
 import plotly.express as px
 
-def render_map(df_filtrado, y_col, metrica, ALTO, size):
+def render_map(df_filtrado, y_col, metrica, ALTO, size, zoomm):
         # --- Diccionario de coordenadas de provincias argentinas ---
         coords_provincias = {
             "Buenos Aires": (-34.61, -58.38),
@@ -43,7 +43,7 @@ def render_map(df_filtrado, y_col, metrica, ALTO, size):
         color_continuous_scale="plasma",
         hover_name="Provincia",
         mapbox_style="carto-positron",
-        zoom=3,
+        zoom=zoomm,
         center={"lat": -38.4161, "lon": -63.6167},
         title=f"Ventas por Provincia ({metrica})",
         size_max=size
@@ -64,7 +64,7 @@ def render_map(df_filtrado, y_col, metrica, ALTO, size):
 
         # Ajuste de zoom al contenido (si cambia el set de provincias)
         fig_mapbox.update_layout(
-            mapbox=dict(center={"lat": -38.4161, "lon": -63.6167}, zoom=3)
+            mapbox=dict(center={"lat": -38.4161, "lon": -63.6167}, zoom=zoomm)
         )
 
         # Render en Streamlit

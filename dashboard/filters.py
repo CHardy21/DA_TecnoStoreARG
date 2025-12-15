@@ -23,8 +23,8 @@ def segmented_pills(label: str, options: list[str], state_key: str, default: str
 def render_filters(df, sidebar: bool):
     # --- Logo + Título ---
     if sidebar:
-        st.sidebar.image("assets/favicon.png", width=70)
-        st.sidebar.title("CHardy TecnoStore ARG ")
+        st.sidebar.image("assets/logo.png", width=300)
+        
     else:
         col1, col2 = st.columns([0.1, 1.5])  
         with col1:
