@@ -101,7 +101,6 @@ df = cargar_modelo_datos()
 
 # Obtener el valor desde la URL
 show_sidebar = get_bool_param("sidebar", default=False)
-print("show_sidebar: ",show_sidebar)
 
 # Renderizando la WEB
 df_filtrado, metrica = render_filters(df, sidebar=show_sidebar)

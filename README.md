@@ -49,9 +49,30 @@ https://chardy-ts.streamlit.app
 Informatorio 2025 – Módulo de Análisis de Datos
 
 
+---
+
+
+### Screenshots:
+
+
+#### Layout
+![Dashboard](/assets/screenshot001.jpg)
+![Dashboard](/assets/screenshot002.jpg)
+![Dashboard](/assets/screenshot003.jpg)
+
+#### With sidebar
+![Dashboar witch sidebar](/assets/screenshot004.jpg
+)
+
 
 ## 🤝 Contribuciones
 
+
+
 ¡Contribuciones y comentarios son bienvenidas!
+
+## 📬 Contacto
+
+[![WhatsApp](https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/+5493624904720)  [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/chardy21)  [![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:chardy.estudio@gmail.com)
 
 ---
